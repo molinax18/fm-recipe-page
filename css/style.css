@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Young+Serif&display=swap");
+
+:root {
+  --white: hsl(0, 0%, 100%);
+
+  --stone-100: hsl(30, 54%, 90%);
+  --stone-150: hsl(30, 18%, 87%);
+  --stone-600: hsl(30, 10%, 34%);
+  --stone-900: hsl(24, 5%, 18%);
+
+  --rose-800: hsl(332, 51%, 32%);
+  --rose-50: hsl(330, 100%, 98%);
+  
+  --brown-800: hsl(14, 45%, 36%);
+
+  --fs-base: 16px;
+  --lh-base: 1.5;
+  
+  --ff-young-serif: "Young Serif";
+  --fw-young-serif-light: 400;
+  
+  
+  --ff-outfit: "Outfit";
+  --fw-outfit-light: 400;
+  --fw-outfit-medium: 600;
+  --fw-outfit-bold: 700;
+}
+
+*,
+*::before,
+*::after {
+  color: inherit;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+html {
+  font-size: var(--fs-base);
+  font-family: var(--ff-outfit);
+  font-weight: var(--fw-outfit-light);
+  line-height: var(--lh-base);
+}
