@@ -13,17 +13,28 @@
   
   --brown-800: hsl(14, 45%, 36%);
 
-  --fs-base: 16px;
-  --lh-base: 1.5;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.85rem;
+  --fs-xl: 2.2rem;
+  --lh-title: 1.2;
+  --lh-base: 1.4;
   
   --ff-young-serif: "Young Serif";
   --fw-young-serif-light: 400;
-  
   
   --ff-outfit: "Outfit";
   --fw-outfit-light: 400;
   --fw-outfit-medium: 600;
   --fw-outfit-bold: 700;
+
+  --border-r-card: 0.86rem;
+  --border-r-card-sm: 0.652rem;
+  --max-width-card: 40rem;
+
+  --spacing-xs: 0.85rem;
+  --spacing-sm: 1.2rem;
+  --spacing-md: 1.5rem;
 }
 
 *,
@@ -50,8 +61,200 @@ ul, ol {
 }
 
 html {
-  font-size: var(--fs-base);
+  color: var(--stone-600);
+  font-size: clamp(var(--fs-sm), 2vw, var(--fs-md));
   font-family: var(--ff-outfit);
   font-weight: var(--fw-outfit-light);
   line-height: var(--lh-base);
+}
+
+body {
+  background-color: var(--stone-100);
+}
+
+/* Utilities */
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Components */
+.title {
+  color: var(--stone-900);
+  font-size: clamp(var(--fs-lg), 3vw, var(--fs-xl));
+  font-family: var(--ff-young-serif);
+  font-weight: var(--fw-young-serif-light);
+  line-height: var(--lh-title);
+}
+
+.md-title {
+  color: var(--brown-800);
+  font-family: var(--ff-young-serif);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-young-serif-light);
+}
+
+.sm-title {
+  color: var(--rose-800);
+  font-weight: var(--fw-outfit-medium);
+  font-size: var(--fs-md);
+}
+
+.separator {
+  border: none;
+  height: 1px;
+  background-color: var(--stone-150);;
+}
+
+/* Card recipe */
+.card-recipe {
+  background-color: var(--white);
+}
+
+.card-recipe img {
+  width: 100%;
+}
+
+.card-recipe.flex-col {
+  gap: var(--spacing-md);
+}
+
+.card-recipe__content {
+  padding-inline: var(--spacing-sm);
+}
+
+.card-recipe__content.flex-col {
+  gap: var(--spacing-md);
+}
+
+.card-recipe__header.flex-col {
+  gap: var(--spacing-sm);
+}
+
+.card-recipe__preparation {
+  background-color: var(--rose-50);
+  padding: var(--spacing-sm);
+  border-radius: var(--border-r-card-sm);
+}
+
+.card-recipe__preparation.flex-col,
+.card-recipe__preparation-content.flex-col {
+  gap: var(--spacing-xs);
+}
+
+.card-recipe__preparation-content li {
+  display: inline-flex;
+  align-items: center;
+}
+
+.card-recipe__preparation-content li::before {
+  content: "";
+  flex-shrink: 0;
+
+  margin-inline: var(--spacing-xs);
+  background-color: var(--stone-600);
+  border-radius: 50%;
+  width: 5px;
+  height: 5px;
+}
+
+.card-recipe__preparation-content li span {
+  color: var(--stone-600);
+  font-weight: var(--fw-outfit-medium);
+}
+
+/* Ingredients */
+.card-recipe__ingredients.flex-col,
+.card-recipe__ingredients-content.flex-col {
+  gap: var(--spacing-xs);
+}
+
+.card-recipe__ingredients-content li {
+  display: inline-flex;
+  align-items: center;
+}
+
+.card-recipe__ingredients-content li::before {
+  content: "";
+  flex-shrink: 0;
+
+  background-color: var(--brown-800);
+  border-radius: 50%;
+  width: 5px;
+  height: 5px;
+  margin-inline: var(--spacing-xs);
+}
+
+/* Instructions */
+.card-recipe__instructions.flex-col,
+.card-recipe__instructions-content.flex-col {
+  gap: var(--spacing-xs);
+}
+
+.card-recipe__instructions-content {
+  counter-reset: item;
+}
+
+.card-recipe__instructions-content li {
+  display: inline-flex;
+  align-items: center;
+
+  counter-increment: item;
+}
+
+.card-recipe__instructions-content li::before {
+  content: counter(item) ".";
+  flex-shrink: 0;
+  align-self: start;
+
+  color: var(--brown-800);
+  font-weight: var(--fw-outfit-medium);
+  margin-inline: var(--spacing-xs);
+}
+
+.card-recipe__instructions-content li span {
+  color: var(--stone-600);
+  font-weight: var(--fw-outfit-bold);
+}
+
+/* Nutrition */
+.card-recipe__nutrition.flex-col {
+  gap: var(--spacing-xs);
+}
+
+.card-recipe__nutrition table {
+  border-spacing: 0;
+}
+
+.card-recipe__nutrition td {
+  padding: var(--spacing-xs);
+  border-bottom: 1px solid var(--stone-150);
+}
+
+.card-recipe__nutrition td:last-child {
+  color: var(--brown-800);
+  font-weight: var(--fw-outfit-bold);
+}
+
+.card-recipe__nutrition tr:last-child td {
+  border: none;
+}
+
+/* Media queries */
+@media (width >= 520px) {
+  .card-recipe {
+    border-radius: var(--border-r-card);
+    margin: var(--spacing-sm) auto;
+    padding: var(--spacing-md);
+    width: 90%;
+    max-width: var(--max-width-card);
+  }
+
+  .card-recipe img {
+    border-radius: var(--border-r-card-sm);
+  }
+  
+  .card-recipe__content {
+    padding: 0;
+  }
 }
